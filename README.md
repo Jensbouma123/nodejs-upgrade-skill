@@ -38,17 +38,17 @@ The fastest way to install — works with 40+ AI coding agents automatically:
 
 ```bash
 cd your-project/
-npx skills add jensbouma/nodejs-upgrade-skill
+npx skills add Jensbouma123/nodejs-upgrade-skill
 ```
 
 This detects which agents you use and installs the skill in the correct format for each one. You can also target specific agents:
 
 ```bash
 # Install for specific agents only
-npx skills add jensbouma/nodejs-upgrade-skill -a claude-code -a cursor
+npx skills add Jensbouma123/nodejs-upgrade-skill -a claude-code -a cursor
 
 # Non-interactive (CI/CD friendly)
-npx skills add jensbouma/nodejs-upgrade-skill -y
+npx skills add Jensbouma123/nodejs-upgrade-skill -y
 ```
 
 ### Option 2: Setup script (interactive)
@@ -56,7 +56,7 @@ npx skills add jensbouma/nodejs-upgrade-skill -y
 Clone this repo, then run the setup script in your target project:
 
 ```bash
-git clone https://github.com/jensbouma/nodejs-upgrade-skill /tmp/nodejs-upgrade-skill
+git clone https://github.com/Jensbouma123/nodejs-upgrade-skill /tmp/nodejs-upgrade-skill
 cd your-project/
 bash /tmp/nodejs-upgrade-skill/scripts/setup.sh
 ```
@@ -77,11 +77,11 @@ Clone directly into your skills directory:
 ```bash
 # Project-level (shared with team)
 mkdir -p .claude/skills
-git clone https://github.com/jensbouma/nodejs-upgrade-skill .claude/skills/nodejs-upgrade-skill
+git clone https://github.com/Jensbouma123/nodejs-upgrade-skill .claude/skills/nodejs-upgrade-skill
 
 # Or user-level (all your projects)
 mkdir -p ~/.claude/skills
-git clone https://github.com/jensbouma/nodejs-upgrade-skill ~/.claude/skills/nodejs-upgrade-skill
+git clone https://github.com/Jensbouma123/nodejs-upgrade-skill ~/.claude/skills/nodejs-upgrade-skill
 ```
 
 ### Option 4: Manual
