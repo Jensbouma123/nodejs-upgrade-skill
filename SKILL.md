@@ -29,22 +29,22 @@ outdated Node.js version to the latest stable LTS.
 
 ## Resolve Target Version
 
-1. **Fetch current release data**:
-   ```bash
-   curl -s https://endoflife.date/api/nodejs.json | head -80
-   ```
-   Fallback: `curl -s https://nodejs.org/dist/index.json | head -40`
-   and cross-reference https://nodejs.org/en/about/previous-releases
+Run the target resolver to automatically determine the recommended version:
+```bash
+bash <SKILL_DIR>/scripts/resolve-target.sh
+```
+This fetches the official Node.js release schedule from
+https://github.com/nodejs/Release (the source behind
+https://nodejs.org/en/about/previous-releases) and outputs the most recent
+**Active LTS** version as the recommended target, plus a conservative
+Maintenance LTS alternative.
 
-2. **Identify**: Active LTS (recommended target), Maintenance LTS (conservative), Current (not for production), EOL (must leave).
+**Confirm target with user** before proceeding.
 
-3. **Release model**: Node <=26 uses even=LTS, odd=no-LTS. Node >=27: every version gets LTS, one release/year in April.
-
-4. **Confirm target with user** before proceeding. If Active LTS is <2 months old, offer previous Maintenance LTS as alternative.
-
-5. **Map breaking changes** for the version jump using `references/REFERENCES.md`. For versions not covered there, fetch:
-   - https://nodejs.org/en/blog/migrations/
-   - https://github.com/nodejs/node/blob/main/CHANGELOG.md
+Then **map breaking changes** for the version jump using `references/REFERENCES.md`.
+For versions not covered there, fetch:
+- https://nodejs.org/en/blog/migrations/
+- https://github.com/nodejs/node/blob/main/CHANGELOG.md
 
 ---
 

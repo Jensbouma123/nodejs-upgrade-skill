@@ -120,6 +120,7 @@ nodejs-upgrade-skill/
     EXAMPLE_REPORT.md             # Example upgrade report output
   scripts/
     scan-node-version.sh          # Pre-flight scanner
+    resolve-target.sh             # Auto-detect Active LTS target version
     setup.sh                      # Multi-agent installer
 ```
 

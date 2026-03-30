@@ -55,25 +55,11 @@ fi
 
 # ─── Fetch current release landscape ────────────────────────────────
 header "Node.js Release Landscape (live)"
-if command -v curl &>/dev/null; then
-  eol_data=$(curl -sf "https://endoflife.date/api/nodejs.json" 2>/dev/null || true)
-  if [ -n "$eol_data" ]; then
-    echo "$eol_data" | grep -oE '"cycle":"[^"]+"|"lts":"[^"]+"|"eol":"[^"]+"|"latest":"[^"]+"' | head -20 | sed 's/^/      /'
-    echo ""
-    info "Full schedule: https://endoflife.date/nodejs"
-  else
-    warn "endoflife.date unreachable — trying fallback (nodejs.org/dist)"
-    dist_data=$(curl -sf "https://nodejs.org/dist/index.json" 2>/dev/null || true)
-    if [ -n "$dist_data" ]; then
-      echo "$dist_data" | grep -oE '"version":"[^"]+"|"lts":[^,}]+' | head -20 | sed 's/^/      /'
-      echo ""
-      info "Cross-reference with: https://nodejs.org/en/about/previous-releases"
-    else
-      warn "Could not fetch release data — check https://endoflife.date/nodejs manually"
-    fi
-  fi
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [ -x "$SCRIPT_DIR/resolve-target.sh" ] || [ -f "$SCRIPT_DIR/resolve-target.sh" ]; then
+  bash "$SCRIPT_DIR/resolve-target.sh" 2>&1 | sed 's/^/  /'
 else
-  warn "curl not available — check https://endoflife.date/nodejs manually"
+  warn "resolve-target.sh not found — check https://nodejs.org/en/about/previous-releases manually"
 fi
 
 # ─── Version declaration files ───────────────────────────────────────
